@@ -1,0 +1,17 @@
+/*
+    Main Page styles
+*/
+.main-size {
+  text-align: center;
+  margin: auto;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+@media (max-width: 1200px) and (min-width: 767px) {
+  .main-size {
+    min-width: 320px;
+  }
+}
