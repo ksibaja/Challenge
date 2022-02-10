@@ -1,0 +1,35 @@
+/*
+    NotFound Page styles
+*/
+.img-size {
+  margin: auto;
+  max-width: 20rem;
+}
+
+#notFound > .card {
+  border-style: none !important;
+}
+
+.not-found-size {
+  text-align: center;
+}
+
+@media (max-width: 1200px) and (min-width: 767px) {
+  .not-found-size {
+    min-width: 500px;
+  }
+}
+
+@media (max-width: 630px) {
+  .img-size {
+    margin: auto;
+    max-width: 20rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .img-size {
+    margin: auto;
+    max-width: 15rem;
+  }
+}

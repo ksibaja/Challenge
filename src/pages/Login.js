@@ -1,51 +1,87 @@
 import React from "react";
-import "./styles/pages.css";
-import { Form, Button, Card, Container } from "react-bootstrap";
+import "./styles/Login.css";
+import { Container } from "react-bootstrap";
+import LoginCard from "../components/LoginCard";
+import Swal from "sweetalert2";
 
 class Login extends React.Component {
-  componentDidMount() {
-    document.getElementById("topnavbar").hidden = true;
-  }
+  state = {
+    form: {
+      user: "",
+      password: "",
+    },
+    validated: false,
+    login: false,
+  };
 
-  state = {};
+  handleChange = (e) => {
+    this.setState({
+      form: {
+        ...this.state.form,
+        [e.target.name]: e.target.value,
+      },
+    });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    let user = this.state.form.user;
+    let pass = this.state.form.password;
+
+    if (user === "" || pass === "") {
+      this.setState({ validated: true });
+    } else if (user === "admin" && pass === "123456") {
+      this.handleClickLogin();
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Unregistered user",
+        text: "Check that the data is correct!",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "OK",
+      });
+    }
+  };
 
   handleClickLogin = () => {
-    window.location.href = '/main';
+    let user = {
+      auth: true,
+    };
+    localStorage.setItem("loggedIn", JSON.stringify(user));
+    window.location.href = "/main";
   };
 
   render() {
     return (
-      <Container
-        className="col-md-3 main-size"
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
-      >
-        <Card>
-          <Card.Body>
-            <h1>Login</h1>
+      <div>
+        <div className="img-login">
+          <img
+            src="https://snowsoftwaresolutions.com/img/snow-negro.png"
+            width="250"
+            height="85.73"
+            className="d-line-block align-top"
+            alt="SnowImage"
+          />
+        </div>
 
-            <Form style={{ textAlign: "left" }}>
-              <Form.Group className="mb-3" controlId="formUser">
-                <Form.Label>User</Form.Label>
-                <Form.Control type="text" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" />
-              </Form.Group>
-            </Form>
-            <div className="d-grid gap-2">
-              <Button onClick={this.handleClickLogin} varian="primary">
-                Sign In
-              </Button>
-            </div>
-          </Card.Body>
-        </Card>
-      </Container>
+        <Container
+          className="col-md-4 main-size"
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "47.5%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <LoginCard
+            onChange={this.handleChange}
+            onSubmit={this.handleSubmit}
+            form={this.state.form}
+            validated={this.state.validated}
+          />
+        </Container>
+      </div>
     );
   }
 }

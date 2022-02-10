@@ -1,0 +1,52 @@
+.main-size > .card {
+  background: #fafafa !important;
+  box-shadow: 0px 6px 9px 0px rgb(0 0 0 / 6%) !important;
+}
+
+.img-login {
+  text-align: center;
+  margin: auto;
+  margin-top: 25px;
+}
+
+.main-size {
+  text-align: center;
+  margin: auto;
+}
+
+.swal2-container > .swal2-popup > .swal2-icon,
+#swal2-html-container {
+  margin-top: 15px;
+}
+
+.swal2-container > .swal2-popup > .swal2-title {
+  padding-top: 10px;
+}
+
+.swal2-container > .swal2-popup > .swal2-actions > button {
+  width: 90.46px;
+}
+
+@media (min-width: 1250px) {
+  .main-size {
+    max-width: 425px !important;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 767px) {
+  .main-size {
+    min-width: 375px;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 550px) {
+  .main-size {
+    margin-top: 3%;
+  }
+}
+
+@media (max-width: 550px) {
+  .main-size {
+    margin-top: 5%;
+  }
+}
